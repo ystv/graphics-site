@@ -6,11 +6,21 @@ import { useEvent } from "../event-provider";
 import { type MultiTextOption } from "@prisma/client";
 import React, { useEffect } from "react";
 
-export default function MultiText(props: {
+type MultiTextProps = {
   path: string;
   event_id?: string;
-  children: (multiTextData: MultiTextOption) => React.ReactNode;
-}) {
+} & (
+  | {
+      returnUndefined?: false;
+      children: (multiTextData: MultiTextOption) => React.ReactNode;
+    }
+  | {
+      returnUndefined: true;
+      children: (multiTextData: MultiTextOption | undefined) => React.ReactNode;
+    }
+);
+
+export default function MultiText(props: MultiTextProps) {
   const event = useEvent();
 
   const event_id = props.event_id ?? event?.id;
@@ -39,7 +49,10 @@ export default function MultiText(props: {
     },
   );
 
-  if (!multiTextData.data) return <></>;
+  if (!multiTextData.data) {
+    if (props.returnUndefined) return props.children(undefined);
+    return <></>;
+  }
 
   return props.children(multiTextData.data);
 }
