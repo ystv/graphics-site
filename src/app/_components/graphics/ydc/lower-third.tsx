@@ -29,20 +29,6 @@ export function YDCLowerThird(props: GraphicsCollectionComponentProps) {
       {(state) => (
         <motion.div animate={{ opacity: state ? 1 : 0 }}>
           <>
-            {/* <div
-              style={{
-                width: "90%",
-                height: "200px",
-                position: "absolute",
-                bottom: "5%",
-                left: "5%",
-                opacity: 1,
-                zIndex: 1,
-                backgroundColor: "#000",
-                borderRadius: "50px",
-                backgroundImage: "url(/ydc_snow.svg)",
-              }}
-            /> */}
             <div
               style={{
                 position: "absolute",
@@ -52,7 +38,7 @@ export function YDCLowerThird(props: GraphicsCollectionComponentProps) {
                 alignItems: "center",
                 display: "inline-flex",
                 opacity: 1,
-                zIndex: 5,
+                zIndex: 1,
               }}
             >
               <MultiText

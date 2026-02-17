@@ -29,7 +29,6 @@ export default function HoldingCardPage() {
           backgroundColor: "#000",
         }}
       >
-        {/* <YDCSnow /> */}
         <Image
           width={1920}
           height={1080}
