@@ -1,4 +1,4 @@
 {
   "svg.preview.background": "white",
-  "prisma.pinToPrisma6": true
+  "prisma.pinToPrisma6": false
 }

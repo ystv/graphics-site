@@ -27,6 +27,7 @@ COPY --from=build /app/.next/static /app/.next/static
 COPY --from=build /app/next.config.build.js /app/next.config.js
 # Copy these in so that we can still run Prisma migrations in prod
 COPY --from=build /app/prisma/schema.prisma /app/prisma/schema.prisma
+COPY --from=build /app/prisma.config.ts /app/prisma.config.ts
 COPY --from=build /app/prisma/migrations /app/prisma/migrations
 # And so we can run the scripts
 WORKDIR /app

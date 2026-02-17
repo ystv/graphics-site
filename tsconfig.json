@@ -38,7 +38,7 @@
     }
   },
   "include": [
-    ".eslintrc.cjs",
+    "eslint.config.js",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
@@ -46,6 +46,7 @@
     "**/*.js",
     ".next/types/**/*.ts",
     "prisma/types.d.ts",
+    "prisma.config.ts",
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [
