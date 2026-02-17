@@ -94,7 +94,7 @@ export function YDCBackSoon(props: GraphicsCollectionComponentProps) {
                 >
                   {back_soon_message
                     ? back_soon_message.content
-                    : "We will be back after the lunch break!"}
+                    : "We will be back after the break!"}
                 </p>
               )}
             </MultiText>
