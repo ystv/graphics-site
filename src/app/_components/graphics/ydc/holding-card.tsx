@@ -31,6 +31,7 @@ export function YDCHoldingCard(props: GraphicsCollectionComponentProps) {
             style={{
               width: "1920px",
               height: "1080px",
+              position: "absolute",
               opacity: 1,
               zIndex: 10,
               backgroundColor: "#000",

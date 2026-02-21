@@ -29,6 +29,7 @@ export function YDCBackSoon(props: GraphicsCollectionComponentProps) {
             style={{
               width: "1920px",
               height: "1080px",
+              position: "absolute",
               opacity: 1,
               zIndex: 5,
               backgroundColor: "#000",
