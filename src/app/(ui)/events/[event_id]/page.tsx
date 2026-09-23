@@ -20,8 +20,9 @@ import {
   Text,
   Title,
 } from "@mantine/core";
+import Link from "next/link";
 import { use, useEffect, useState } from "react";
-import { FaTrash } from "react-icons/fa";
+import { FaArrowRight, FaTrash } from "react-icons/fa";
 
 function CreateMultiTextOptionForm(props: {
   onSuccess: () => void;
@@ -174,7 +175,17 @@ export default function SingleEventPage({
 
   return (
     <>
-      <Title>{eventState.name}</Title>
+      <Group>
+        <Title>{eventState.name}</Title>
+        <Button
+          component={Link}
+          ml={"auto"}
+          href={`/graphics/${event.data.id}`}
+          rightSection={<FaArrowRight />}
+        >
+          Graphics URL
+        </Button>
+      </Group>
       <Stack>
         <Title order={3}>Visible States</Title>
         {eventState.visible_states.map((vs) => {
