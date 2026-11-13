@@ -2,6 +2,7 @@ import { SportsBug } from "@/app/_components/graphics/sports/bug";
 import { TGraphicsCollection } from "..";
 import { SportLowerThird } from "@/app/_components/graphics/sports/lower-third";
 
+/// TODO: colours, timer, fun stuff
 export const Sports: TGraphicsCollection = {
     slug: "sports",
     name: "Generic Sports",
@@ -16,9 +17,9 @@ export const Sports: TGraphicsCollection = {
             home_short: {
                 name: "Home Team (short)"
             },
-            home_colour: {
-                name: "Home Team colour"
-            },
+            // home_colour: {
+            //     name: "Home Team colour"
+            // },
             home_score: {
                 name: "Home Team Score"
             },
@@ -28,9 +29,9 @@ export const Sports: TGraphicsCollection = {
             away_short: {
                 name: "Away Team (short)"
             },
-            away_colour: {
-                name: "Away team colour"
-            },
+            // away_colour: {
+            //     name: "Away team colour"
+            // },
             away_score: {
                 name: "Away Team Score"
             },
