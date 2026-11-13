@@ -12,6 +12,7 @@ import { visibleStatesRouter } from "./routers/visibleStates";
 import { ydcRouter } from "./routers/ydc";
 import { societiesRouter } from "./routers/societies";
 import { graphicsCollectionsRouter } from "./routers/graphicsCollections";
+import { textFieldsRouter } from "./routers/textFields";
 
 /**
  * This is the primary router for your server.
@@ -29,6 +30,7 @@ export const appRouter = createTRPCRouter({
   output: outputRouter,
   question: questionRouter,
   societies: societiesRouter,
+  textFields: textFieldsRouter,
   timers: timersRouter,
   visibleState: visibleStatesRouter,
   ydc: ydcRouter,

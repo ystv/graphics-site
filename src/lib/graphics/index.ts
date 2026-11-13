@@ -4,17 +4,24 @@ export type TGraphicsCollectionPath = {
   name: string;
 };
 
+export interface TGraphicsCollectionMappedPath extends TGraphicsCollectionPath {
+  mapped_path: string;
+}
+
+export type TGraphicsCollectionPathData<T extends TGraphicsCollectionPath> = {
+  multi_texts?: Record<string, T>;
+  timers?: Record<string, T>;
+  visible_states?: Record<string, T>;
+  societies?: Record<string, T>;
+  text_fields?: Record<string, T>;
+};
+
 export type TGraphicsCollection = {
   slug: string;
   name: string;
   description: string;
   components: GraphicsCollectionComponent[];
-  data: {
-    multi_texts?: Record<string, TGraphicsCollectionPath>;
-    timers?: Record<string, TGraphicsCollectionPath>;
-    visible_states?: Record<string, TGraphicsCollectionPath>;
-    societies?: Record<string, TGraphicsCollectionPath>;
-  };
+  data: TGraphicsCollectionPathData<TGraphicsCollectionPath>;
 };
 
 export type GraphicsCollectionComponentProps = {
@@ -47,18 +54,9 @@ export function flattenRecord<InRecord extends Record<string, unknown>>(
   });
 }
 
-export interface TGraphicsCollectionMappedPath extends TGraphicsCollectionPath {
-  mapped_path: string;
-}
-
 export function getMappedPath(
-  mapping: {
-    multi_texts?: Record<string, TGraphicsCollectionMappedPath>;
-    timers?: Record<string, TGraphicsCollectionMappedPath>;
-    visible_states?: Record<string, TGraphicsCollectionMappedPath>;
-    societies?: Record<string, TGraphicsCollectionMappedPath>;
-  },
-  mappingType: "multi_texts" | "timers" | "visible_states" | "societies",
+  mapping: TGraphicsCollectionPathData<TGraphicsCollectionMappedPath>,
+  mappingType: keyof TGraphicsCollectionPathData<TGraphicsCollectionMappedPath>,
   originalPath: string,
 ) {
   if (!new Object(mapping).hasOwnProperty(mappingType)) {

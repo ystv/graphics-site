@@ -2,6 +2,7 @@
 
 import { Form, TextField } from "@/app/_components/form";
 import { SocietyControl } from "@/app/_components/society-control";
+import { TextFieldControl } from "@/app/_components/text-field-control";
 import { TimerControl } from "@/app/_components/timer-control";
 import { VisibleStateControl } from "@/app/_components/visible-state-control";
 import { useWebsocket } from "@/app/_components/websocket-provider";
@@ -207,6 +208,16 @@ export default function SingleEventPage({
         {eventState.societies.map((s) => {
           return (
             <SocietyControl key={s.id} event_id={eventState.id} path={s.path} />
+          );
+        })}
+        <Title order={3}>Text Fields</Title>
+        {eventState.text_fields.map((t) => {
+          return (
+            <TextFieldControl
+              key={t.id}
+              event_id={eventState.id}
+              path={t.path}
+            />
           );
         })}
         <Title order={3}>Multi Texts</Title>

@@ -29,6 +29,9 @@ const create = {
           societies: z.optional(
             z.record(z.string(), ZGraphicsColectionMappedPath),
           ),
+          text_fields: z.optional(
+            z.record(z.string(), ZGraphicsColectionMappedPath),
+          ),
         }),
       }),
     ),
