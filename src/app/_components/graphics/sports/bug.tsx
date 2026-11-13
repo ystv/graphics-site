@@ -32,7 +32,7 @@ export function SportsBug(props: GraphicsCollectionComponentProps) {
                 position: "absolute",
                 backgroundColor: "#1A2640",
                 width: "5%",
-                height: "5%",
+                height: "4%",
                 top: "5%",
                 left: "5%",
                 borderRadius: `${borderRadius} 0 0 ${borderRadius}`,
@@ -44,22 +44,22 @@ export function SportsBug(props: GraphicsCollectionComponentProps) {
                 position: "absolute",
                 backgroundColor: "#000000",
                 width: "5%",
-                height: "5%",
+                height: "4%",
                 top: "5%",
                 left: "15%",
                 borderRadius: `0 ${borderRadius} ${borderRadius} 0`,
               }}
             />
+            {/* score background box */}
             <motion.div
               style={{
                 position: "absolute",
                 background:
-                  "linear-gradient(90deg, #1A2640 0%, #0A6600 25%, #0A6600 75%, #000000 100%)",
-                width: "5%",
-                height: "5%",
+                  "linear-gradient(90deg, #1A2640 0%, #222 25%, #222 75%, #000000 100%)",
+                width: "7%",
+                height: "4%",
                 top: "5%",
-                left: "10%",
-                // borderRadius: `${borderRadius} 0 0 ${borderRadius}`
+                left: "9%",
               }}
             />
             <MultiText
@@ -76,13 +76,14 @@ export function SportsBug(props: GraphicsCollectionComponentProps) {
                     position: "absolute",
                     fontFamily: "'Open Sans', sans-serif",
                     fontWeight: 800,
-                    fontSize: 20,
-                    top: "6%",
-                    left: "7.5%",
-                    width: "3%",
-                    height: "2%",
+                    fontSize: 24,
+                    width: "5%",
+                    height: "4%",
+                    top: "5%",
+                    left: "5%",
                     color: "#fff",
-                    textAlign: "left",
+                    display: "grid",
+                    placeContent: "center",
                   }}
                 >
                   {home.content}
@@ -103,13 +104,14 @@ export function SportsBug(props: GraphicsCollectionComponentProps) {
                     position: "absolute",
                     fontFamily: "'Open Sans', sans-serif",
                     fontWeight: 800,
-                    fontSize: 20,
-                    top: "6%",
+                    fontSize: 24,
+                    width: "5%",
+                    height: "4%",
+                    top: "5%",
                     left: "15%",
-                    width: "3%",
-                    height: "2%",
                     color: "#fff",
-                    textAlign: "right",
+                    display: "grid",
+                    placeContent: "center",
                   }}
                 >
                   {away.content}
@@ -131,18 +133,36 @@ export function SportsBug(props: GraphicsCollectionComponentProps) {
                     fontFamily: "'Open Sans', sans-serif",
                     fontWeight: 800,
                     fontSize: 20,
-                    top: "6%",
-                    left: "11.5%",
-                    width: "1%",
-                    height: "2%",
+                    width: "2.5%",
+                    height: "4%",
+                    top: "5%",
+                    left: "10%",
                     color: "#fff",
-                    textAlign: "left",
+                    display: "grid",
+                    placeContent: "center",
                   }}
                 >
-                  {home_score.content}
+                  {home_score.content !== "" ? home_score.content : 0}
                 </motion.div>
               )}
             </MultiText>
+            <motion.div
+              style={{
+                position: "absolute",
+                fontFamily: "'Open Sans', sans-serif",
+                fontWeight: 800,
+                fontSize: 20,
+                width: "5%",
+                height: "4%",
+                top: "5%",
+                left: "10%",
+                color: "#fff",
+                display: "grid",
+                placeContent: "center",
+              }}
+            >
+              -
+            </motion.div>
             <MultiText
               event_id={graphicsCollection.data.event_id}
               path={getMappedPath(
@@ -158,15 +178,16 @@ export function SportsBug(props: GraphicsCollectionComponentProps) {
                     fontFamily: "'Open Sans', sans-serif",
                     fontWeight: 800,
                     fontSize: 20,
-                    top: "6%",
+                    width: "2.5%",
+                    height: "4%",
+                    top: "5%",
                     left: "12.5%",
-                    width: "1%",
-                    height: "2%",
                     color: "#fff",
-                    textAlign: "right",
+                    display: "grid",
+                    placeContent: "center",
                   }}
                 >
-                  {away_score.content}
+                  {away_score.content !== "" ? away_score.content : 0}
                 </motion.div>
               )}
             </MultiText>
@@ -194,24 +215,24 @@ export function SportsBug(props: GraphicsCollectionComponentProps) {
                         background: "#e3170a",
                         borderRadius: `${borderRadius}`,
                         top: "5%",
-                        height: "5%",
+                        height: "4%",
                         left: "20.5%",
                         paddingLeft: "2%",
                         paddingRight: "2%",
+                        display: "grid",
+                        placeContent: "center",
                       }}
                       animate={{
-                        opacity: notesState ? 1 : 0,
+                        opacity: notesState && notes.content !== "" ? 1 : 0,
                       }}
                     >
                       <motion.div
                         style={{
                           position: "relative",
                           color: "#fff",
-                          top: "1vh",
                           fontFamily: "'Open Sans', sans-serif",
                           fontWeight: 700,
                           fontSize: 20,
-                          textAlign: "left",
                         }}
                       >
                         {notes.content}

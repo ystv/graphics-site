@@ -32,7 +32,7 @@ export function SportLowerThird(props: GraphicsCollectionComponentProps) {
               path={getMappedPath(
                 graphicsCollection.data.path_mapping,
                 "visible_states",
-                "notes"
+                "notes",
               )}
             >
               {(notesState) => (
@@ -48,6 +48,8 @@ export function SportLowerThird(props: GraphicsCollectionComponentProps) {
                     paddingLeft: "2%",
                     paddingRight: "2%",
                     borderRadius: "10px 10px 0 0",
+                    display: "grid",
+                    placeContent: "center",
                   }}
                 >
                   <MultiText
@@ -55,7 +57,7 @@ export function SportLowerThird(props: GraphicsCollectionComponentProps) {
                     path={getMappedPath(
                       graphicsCollection.data.path_mapping,
                       "multi_texts",
-                      "notes"
+                      "notes",
                     )}
                   >
                     {(notes) => (
@@ -64,11 +66,10 @@ export function SportLowerThird(props: GraphicsCollectionComponentProps) {
                           position: "relative",
                           color: "#fff",
                           margin: "auto",
-                          top: "1vh",
                           fontFamily: "'Open Sans', sans-serif",
                           fontWeight: 600,
-                          fontSize: 20,
-                          textAlign: "center"
+                          fontSize: 24,
+                          textAlign: "center",
                         }}
                       >
                         {notes.content}
@@ -178,7 +179,7 @@ export function SportLowerThird(props: GraphicsCollectionComponentProps) {
                     style={{
                       position: "absolute",
                       background:
-                        "linear-gradient(90deg, #1A2640 0%, #333 25%, #333 75%, #000000 100%)",
+                        "linear-gradient(90deg, #1A2640 0%, #222 25%, #222 75%, #000000 100%)",
                       width: "20%",
                       height: "8%",
                       bottom: "5%",
@@ -192,7 +193,7 @@ export function SportLowerThird(props: GraphicsCollectionComponentProps) {
                     path={getMappedPath(
                       graphicsCollection.data.path_mapping,
                       "multi_texts",
-                      "home_score"
+                      "home_score",
                     )}
                     event_id={graphicsCollection.data.event_id}
                   >
@@ -201,19 +202,20 @@ export function SportLowerThird(props: GraphicsCollectionComponentProps) {
                         style={{
                           position: "absolute",
                           fontFamily: "'Open Sans', sans-serif",
-                          fontWeight: 600,
+                          fontWeight: 800,
                           fontSize: 38,
                           color: "#fff",
                           width: "3%",
                           left: "45%",
                           bottom: "6.5%",
-                          textAlign: "left",
+                          display: "grid",
+                          placeContent: "center",
                         }}
                         animate={{
                           opacity: scoreState ? 1 : 0,
                         }}
                       >
-                        {home_score.content}
+                        {home_score.content !== "" ? home_score.content : 0}
                       </motion.div>
                     )}
                   </MultiText>
@@ -221,7 +223,7 @@ export function SportLowerThird(props: GraphicsCollectionComponentProps) {
                     path={getMappedPath(
                       graphicsCollection.data.path_mapping,
                       "multi_texts",
-                      "away_score"
+                      "away_score",
                     )}
                     event_id={graphicsCollection.data.event_id}
                   >
@@ -230,19 +232,20 @@ export function SportLowerThird(props: GraphicsCollectionComponentProps) {
                         style={{
                           position: "absolute",
                           fontFamily: "'Open Sans', sans-serif",
-                          fontWeight: 600,
+                          fontWeight: 800,
                           fontSize: 38,
                           color: "#fff",
                           width: "3%",
                           right: "45%",
                           bottom: "6.5%",
-                          textAlign: "right",
+                          display: "grid",
+                          placeContent: "center",
                         }}
                         animate={{
                           opacity: scoreState ? 1 : 0,
                         }}
                       >
-                        {away_score.content}
+                        {away_score.content !== "" ? away_score.content : 0}
                       </motion.div>
                     )}
                   </MultiText>
@@ -266,8 +269,7 @@ export function SportLowerThird(props: GraphicsCollectionComponentProps) {
             </VisibleStateWrapper>
           </motion.div>
         </>
-      )
-      }
-    </VisibleStateWrapper >
+      )}
+    </VisibleStateWrapper>
   );
 }
