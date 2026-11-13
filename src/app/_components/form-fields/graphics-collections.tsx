@@ -40,6 +40,7 @@ export function GraphicsCollectionsField(props: {
       timers?: TGraphicsCollectionMappedPath[];
       visible_states?: TGraphicsCollectionMappedPath[];
       societies?: TGraphicsCollectionMappedPath[];
+      text_fields?: TGraphicsCollectionMappedPath[];
     };
   }
 
@@ -223,6 +224,36 @@ export function GraphicsCollectionsField(props: {
                       </Table.Tr>
                     );
                   })}
+                </Table.Tbody>
+              </Table>
+
+              <Space h="md" />
+              <Title order={5}>Text Fields</Title>
+              <Table striped>
+                <Table.Thead>
+                  <Table.Tr>
+                    <Table.Th>Name</Table.Th>
+                    <Table.Th>Internal Path</Table.Th>
+                    <Table.Th>Mapped Path</Table.Th>
+                  </Table.Tr>
+                </Table.Thead>
+                <Table.Tbody>
+                  {flattenRecord(collection.data.text_fields).map(
+                    (textField) => {
+                      return (
+                        <Table.Tr key={textField.key}>
+                          <Table.Td>{textField.value.name}</Table.Td>
+                          <Table.Td>{textField.key}</Table.Td>
+                          <Table.Td>
+                            <TextField
+                              required
+                              name={`${props.name}.${fieldIdx}.mapping.text_fields.${textField.key}.mapped_path`}
+                            />
+                          </Table.Td>
+                        </Table.Tr>
+                      );
+                    },
+                  )}
                 </Table.Tbody>
               </Table>
             </Card>

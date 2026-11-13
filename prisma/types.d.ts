@@ -36,6 +36,7 @@ declare global {
       timers?: Record<string, TGraphicsCollectionMappedPath>;
       visible_states?: Record<string, TGraphicsCollectionMappedPath>;
       societies?: Record<string, TGraphicsCollectionMappedPath>;
+      text_fields?: Record<string, TGraphicsCollectionMappedPath>;
     };
   }
 }

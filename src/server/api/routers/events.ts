@@ -30,6 +30,7 @@ export const eventsRouter = createTRPCRouter({
       const timers = new Set<string>();
       const visibileStates = new Set<string>();
       const societies = new Set<string>();
+      const textFields = new Set<string>();
 
       for (const inputCollection of input.collections) {
         await ctx.db.eventGraphicsCollection.create({
@@ -51,6 +52,9 @@ export const eventsRouter = createTRPCRouter({
         });
         flattenRecord(inputCollection.mapping.societies).map((soc) => {
           societies.add(soc.key);
+        });
+        flattenRecord(inputCollection.mapping.text_fields).map((txt) => {
+          textFields.add(txt.key);
         });
       }
 
@@ -91,6 +95,15 @@ export const eventsRouter = createTRPCRouter({
           data: {
             event: { connect: { id: event.id } },
             path: socPath,
+          },
+        });
+      }
+
+      for (const txtPath of textFields) {
+        await ctx.db.textField.create({
+          data: {
+            event: { connect: { id: event.id } },
+            path: txtPath,
           },
         });
       }
@@ -181,6 +194,7 @@ export const eventsRouter = createTRPCRouter({
           timers: true,
           visible_states: true,
           societies: true,
+          text_fields: true,
           active_cue: true,
           cues: true,
         },

@@ -5,6 +5,7 @@ import { graphicsCollectionsSchema } from "./graphicsCollections.schema";
 import { mtOptionsSchema } from "./mtOption.schema";
 import { multiTextsSchema } from "./multiTexts.schema";
 import { societiesSchema } from "./societies.schema";
+import { textFieldsSchema } from "./textFields.schema";
 import { timersSchema } from "./timers.schema";
 
 export const schemas = {
@@ -15,5 +16,6 @@ export const schemas = {
   mtOptions: mtOptionsSchema,
   multiTexts: multiTextsSchema,
   societies: societiesSchema,
+  textFields: textFieldsSchema,
   timers: timersSchema,
 };

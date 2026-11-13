@@ -84,13 +84,13 @@ model EventType {
   name String
 
   /// [EventTypeMultiTextSkeleton]
-  multi_text_skeleton Json @default("[]")
+  multi_text_skeleton    Json @default("[]")
   /// [EventTypeTimerSkeleton]
-  timer_skeleton Json @default("[]")
+  timer_skeleton         Json @default("[]")
   /// [EventTypeVisibleStateSkeleton]
   visible_state_skeleton Json @default("[]")
   /// [EventTypeSocietySkeleton]
-  society_skeleton Json @default("[]")
+  society_skeleton       Json @default("[]")
 
   children Event[]
 
@@ -111,14 +111,15 @@ model Event {
   graphics_collections EventGraphicsCollection[]
 
   active_cue_id String? @unique
-  active_cue Cue? @relation(name: "active_event_cue", fields: [active_cue_id], references: [id])
+  active_cue    Cue?    @relation(name: "active_event_cue", fields: [active_cue_id], references: [id])
 
   cues Cue[]
 
-  multi_texts MultiText[]
-  timers Timer[]
+  multi_texts    MultiText[]
+  timers         Timer[]
   visible_states VisibleState[]
-  societies   Society[]
+  societies      Society[]
+  text_fields    TextField[]
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt()
@@ -129,8 +130,8 @@ model Event {
 model EventGraphicsCollection {
   id String @id @default(cuid())
 
-  name String?
-  event_id String
+  name            String?
+  event_id        String
   collection_slug String
 
   event Event @relation(fields: [event_id], references: [id])
@@ -190,7 +191,7 @@ model VisibleState {
   visible Boolean
 
   event_id String
-  event Event  @relation(fields: [event_id], references: [id])
+  event    Event  @relation(fields: [event_id], references: [id])
 
   @@unique([event_id, path])
   @@map("visible_states")
@@ -202,18 +203,34 @@ model Timer {
   name String?
   path String
 
-  duration_seconds Int
-  allow_overtime Boolean @default(false)
-  countdown Boolean @default(true)
-  ends_at DateTime
-  paused Boolean?
+  duration_seconds  Int
+  allow_overtime    Boolean  @default(false)
+  countdown         Boolean  @default(true)
+  ends_at           DateTime
+  paused            Boolean?
   paused_at_seconds Int?
 
   event_id String
-  event Event  @relation(fields: [event_id], references: [id])
+  event    Event  @relation(fields: [event_id], references: [id])
 
   @@unique([event_id, path])
   @@map("timers")
+}
+
+model TextField {
+  id String @id @default(cuid())
+
+  name String?
+
+  path String
+
+  value String?
+
+  event_id String
+  event    Event  @relation(fields: [event_id], references: [id])
+
+  @@unique([event_id, path])
+  @@map("text_field")
 }
 
 model Society {
@@ -242,7 +259,7 @@ model Cue {
   is_active Event? @relation(name: "active_event_cue")
 
   event_id String
-  event Event @relation(fields: [event_id], references: [id])
+  event    Event  @relation(fields: [event_id], references: [id])
 
   @@map("cues")
 }
